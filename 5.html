@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青少年日語學習平台</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+        }
+        header {
+            background-color: #1abc9c;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #16a085;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .banner {
+            background: url('https://via.placeholder.com/1920x500') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .banner p {
+            font-size: 20px;
+        }
+        .section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .grid-item {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        footer {
+            background-color: #16a085;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #1abc9c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .cta-button:hover {
+            background-color: #148f77;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>青少年日語學習平台</h1>
+        <p>有趣、有效的日語學習，開啟新世界</p>
+    </header>
+
+    <nav>
+        <a href="#courses">課程學習</a>
+        <a href="#games">遊戲挑戰</a>
+        <a href="#community">學習社群</a>
+        <a href="#about">關於我們</a>
+    </nav>
+
+    <div class="banner">
+        <h1>輕鬆學日語，快樂探索日本文化！</h1>
+        <p>立即加入，開始學習之旅！</p>
+        <a href="#courses" class="cta-button">開始學習</a>
+    </div>
+
+    <section id="courses" class="section">
+        <h2>課程學習</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <h3>基礎日語</h3>
+                <p>學習平假名、片假名和簡單句型。</p>
+                <a href="#" class="cta-button">查看課程</a>
+            </div>
+            <div class="grid-item">
+                <h3>進階日語</h3>
+                <p>掌握動詞變化、敬語和實用文法。</p>
+                <a href="#" class="cta-button">查看課程</a>
+            </div>
+            <div class="grid-item">
+                <h3>日語文化</h3>
+                <p>了解日本的文化背景與生活用語。</p>
+                <a href="#" class="cta-button">查看課程</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="games" class="section">
+        <h2>遊戲與挑戰</h2>
+        <p>透過遊戲化的方式輕鬆記單字、練聽力，並與朋友競爭。</p>
+        <div class="grid">
+            <div class="grid-item">
+                <h3>單字記憶遊戲</h3>
+                <p>挑戰自己的單字量，快速提升記憶力！</p>
+            </div>
+            <div class="grid-item">
+                <h3>聽力挑戰</h3>
+                <p>在趣味對話中鍛煉聽力技巧。</p>
+            </div>
+            <div class="grid-item">
+                <h3>多人挑戰模式</h3>
+                <p>與好友比拼測驗分數，贏取徽章！</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="community" class="section">
+        <h2>學習社群</h2>
+        <p>與其他日語學習者互動，分享學習資源與經驗。</p>
+        <a href="#" class="cta-button">加入討論區</a>
+    </section>
+
+    <section id="about" class="section">
+        <h2>關於我們</h2>
+        <p>青少年日語學習平台致力於為用戶提供高效、有趣的語言學習體驗，讓語言成為探索世界的橋樑。</p>
+    </section>
+
+    <footer>
+        <p>青少年日語學習平台 © 2024. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
