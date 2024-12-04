@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages 教學網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #24292e;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #2c3e50;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .section p, .section li {
+            color: #333;
+            line-height: 1.6;
+        }
+        footer {
+            background-color: #24292e;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            line-height: 1.6;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>如何將網站放到 GitHub Pages</h1>
+    </header>
+
+    <nav>
+        <a href="#step1">步驟 1：建立 GitHub Repository</a>
+        <a href="#step2">步驟 2：上傳網站檔案</a>
+        <a href="#step3">步驟 3：啟用 GitHub Pages</a>
+    </nav>
+
+    <section id="step1" class="section">
+        <h2>步驟 1：建立 GitHub Repository</h2>
+        <ol>
+            <li>登入你的 <a href="https://github.com" target="_blank">GitHub 帳戶</a>。</li>
+            <li>點擊右上角的 <b>+ New repository</b> 按鈕。</li>
+            <li>輸入 Repository 名稱（例如：<code>my-website</code>）。</li>
+            <li>選擇 <b>Public</b>（公開），然後點擊 <b>Create repository</b>。</li>
+        </ol>
+    </section>
+
+    <section id="step2" class="section">
+        <h2>步驟 2：上傳網站檔案</h2>
+        <ol>
+            <li>進入剛剛建立的 Repository。</li>
+            <li>點擊 <b>Add file</b>，然後選擇 <b>Upload files</b>。</li>
+            <li>將你的網站檔案（例如 <code>index.html</code> 和相關資源）拖曳到上傳區域。</li>
+            <li>填寫提交訊息，然後點擊 <b>Commit changes</b>。</li>
+        </ol>
+    </section>
+
+    <section id="step3" class="section">
+        <h2>步驟 3：啟用 GitHub Pages</h2>
+        <ol>
+            <li>進入 Repository，點擊 <b>Settings</b>。</li>
+            <li>滾動到 <b>Pages</b> 部分。</li>
+            <li>在 <b>Source</b> 下拉選單中選擇 <b>Main</b>（或你的主分支）。</li>
+            <li>點擊 <b>Save</b>。</li>
+            <li>稍等片刻，你的網站將可以在 <code>https://[你的 GitHub 使用者名稱].github.io/[repository 名稱]</code> 訪問。</li>
+        </ol>
+    </section>
+
+    <footer
