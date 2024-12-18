@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會畫畫的火柴人</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        #gameArea {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #canvas {
+            border: 2px solid #000;
+            background-color: #fff;
+        }
+        #controls {
+            margin-top: 10px;
+        }
+        #keywordInput {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        #drawButton, #clearButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        #drawButton {
+            background-color: #28a745;
+            color: white;
+        }
+        #clearButton {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <div id="controls">
+            <input type="text" id="keywordInput" placeholder="輸入關鍵字 (circle, square, line)">
+            <button id="drawButton">畫圖</button>
+            <button id="clearButton">清除</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const keywordInput = document.getElementById('keywordInput');
+        const drawButton = document.getElementById('drawButton');
+        const clearButton = document.getElementById('clearButton');
+
+        // 火柴人繪製函數
+        function drawStickman(x, y) {
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+
+            // 頭
+            ctx.beginPath();
+            ctx.arc(x, y, 20, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // 身體
+            ctx.beginPath();
+            ctx.moveTo(x, y + 20);
+            ctx.lineTo(x, y + 80);
+            ctx.stroke();
+
+            // 手臂
+            ctx.beginPath();
+            ctx.moveTo(x, y + 40);
+            ctx.lineTo(x - 30, y + 60);
+            ctx.moveTo(x, y + 40);
+            ctx.lineTo(x + 30, y + 60);
+            ctx.stroke();
+
+            // 腿
+            ctx.beginPath();
+            ctx.moveTo(x, y + 80);
+            ctx.lineTo(x - 30, y + 120);
+            ctx.moveTo(x, y + 80);
+            ctx.lineTo(x + 30, y + 120);
+            ctx.stroke();
+        }
+
+        // 繪製形狀函數
+        function drawShape(keyword) {
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+
+            switch (keyword.toLowerCase()) {
+                case 'circle':
+                    drawStickman(centerX - 100, centerY - 50); // 畫火柴人
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, 50, 0, Math.PI * 2);
+                    ctx.stroke();
+                    break;
+                case 'square':
+                    drawStickman(centerX - 150, centerY - 50); // 畫火柴人
+                    ctx.beginPath();
+                    ctx.rect(centerX - 50, centerY - 50, 100, 100);
+                    ctx.stroke();
+                    break;
+                case 'line':
+                    drawStickman(centerX - 150, centerY - 50); // 畫火柴人
+                    ctx.beginPath();
+                    ctx.moveTo(centerX - 50, centerY);
+                    ctx.lineTo(centerX + 50, centerY);
+                    ctx.stroke();
+                    break;
+                default:
+                    alert('未知的指令！請輸入 circle, square 或 line。');
+                    break;
+            }
+        }
+
+        // 畫圖按鈕點擊事件
+        drawButton.addEventListener('click', () => {
+            const keyword = keywordInput.value.trim();
+            if (keyword) {
+                drawShape(keyword);
+                keywordInput.value = ''; // 清空輸入框
+            } else {
+                alert('請輸入一個關鍵字！');
+            }
+        });
+
+        // 清除畫布按鈕點擊事件
+        clearButton.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+    </script>
+</body>
+</html>
