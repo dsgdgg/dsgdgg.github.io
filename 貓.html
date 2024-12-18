@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會吃東西的貓遊戲</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+        #gameArea {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-color: #87CEFA;
+        }
+        #cat {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: url('https://via.placeholder.com/80x80.png?text=Cat') no-repeat center center;
+            background-size: cover;
+        }
+        .food {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: url('https://via.placeholder.com/40x40.png?text=Food') no-repeat center center;
+            background-size: cover;
+        }
+        #scoreBoard {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        #gameOver {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        #gameOver button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background: #FFD700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <div id="scoreBoard">分數: 0</div>
+        <div id="cat"></div>
+        <div id="gameOver">
+            <h1>遊戲結束！</h1>
+            <p id="finalScore"></p>
+            <button onclick="restartGame()">再玩一次</button>
+        </div>
+    </div>
+
+    <script>
+        const gameArea = document.getElementById('gameArea');
+        const cat = document.getElementById('cat');
+        const scoreBoard = document.getElementById('scoreBoard');
+        const gameOverScreen = document.getElementById('gameOver');
+        const finalScore = document.getElementById('finalScore');
+
+        let score = 0;
+        let gameDuration = 30000; // 遊戲時間 30 秒
+        let gameInterval, foodInterval;
+        let isGameRunning = false;
+
+        const catSpeed = 10; // 貓移動速度
+        let catPosition = { x: 200, y: 200 };
+
+        // 設定貓咪位置
+        function setCatPosition() {
+            cat.style.left = `${catPosition.x}px`;
+            cat.style.top = `${catPosition.y}px`;
+        }
+
+        // 開始遊戲
+        function startGame() {
+            score = 0;
+            scoreBoard.textContent = `分數: ${score}`;
+            gameOverScreen.style.display = 'none';
+            cat.style.display = 'block';
+            isGameRunning = true;
+
+            catPosition = { x: 200, y: 200 };
+            setCatPosition();
+            spawnFood();
+            gameInterval = setTimeout(endGame, gameDuration);
+        }
+
+        // 控制貓咪移動
+        window.addEventListener('keydown', (e) => {
+            if (!isGameRunning) return;
+
+            const areaWidth = gameArea.offsetWidth;
+            const areaHeight = gameArea.offsetHeight;
+            const catWidth = cat.offsetWidth;
+            const catHeight = cat.offsetHeight;
+
+            switch (e.key) {
+                case 'ArrowUp':
+                    catPosition.y = Math.max(0, catPosition.y - catSpeed);
+                    break;
+                case 'ArrowDown':
+                    catPosition.y = Math.min(areaHeight - catHeight, catPosition.y + catSpeed);
+                    break;
+                case 'ArrowLeft':
+                    catPosition.x = Math.max(0, catPosition.x - catSpeed);
+                    break;
+                case 'ArrowRight':
+                    catPosition.x = Math.min(areaWidth - catWidth, catPosition.x + catSpeed);
+                    break;
+            }
+            setCatPosition();
+            checkCollision();
+        });
+
+        // 生成隨機食物
+        function spawnFood() {
+            if (!isGameRunning) return;
+
+            const food = document.createElement('div');
+            food.classList.add('food');
+            food.style.left = `${Math.random() * (gameArea.offsetWidth - 40)}px`;
+            food.style.top = `${Math.random() * (gameArea.offsetHeight - 40)}px`;
+            gameArea.appendChild(food);
+
+            setTimeout(spawnFood, 2000); // 每兩秒生成一個食物
+        }
+
+        // 檢查貓咪與食物的碰撞
+        function checkCollision() {
+            const catRect = cat.getBoundingClientRect();
+            document.querySelectorAll('.food').forEach(food => {
+                const foodRect = food.getBoundingClientRect();
+
+                if (
+                    catRect.left < foodRect.right &&
+                    catRect.right > foodRect.left &&
+                    catRect.top < foodRect.bottom &&
+                    catRect.bottom > foodRect.top
+                ) {
+                    gameArea.removeChild(food);
+                    score++;
+                    scoreBoard.textContent = `分數: ${score}`;
+                }
+            });
+        }
+
+        // 結束遊戲
+        function endGame() {
+            isGameRunning = false;
+            clearTimeout(gameInterval);
+            cat.style.display = 'none';
+            gameOverScreen.style.display = 'block';
+            finalScore.textContent = `最終分數: ${score}`;
+        }
+
+        // 重啟遊戲
+        function restartGame() {
+            document.querySelectorAll('.food').forEach(food => food.remove());
+            startGame();
+        }
+
+        // 初始化遊戲
+        startGame();
+    </script>
+</body>
+</html>
