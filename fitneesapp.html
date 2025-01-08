@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>減肥管理 APP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+        }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #ff4b4b;
+            color: white;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            margin: 0 0 15px;
+            color: #ff4b4b;
+        }
+        .section p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .stats .stat {
+            padding: 10px;
+        }
+        .stats .stat h3 {
+            margin: 0;
+            color: #ff4b4b;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .cta-button:hover {
+            background-color: #e55d54;
+        }
+        footer {
+            background-color: #ff4b4b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>減肥管理 APP</h1>
+        <p>智能化、個性化的減肥助手</p>
+    </header>
+
+    <nav>
+        <a href="#dashboard">儀表板</a>
+        <a href="#plan">減肥計劃</a>
+        <a href="#community">社群互動</a>
+    </nav>
+
+    <div class="container">
+        <!-- 儀表板 -->
+        <section id="dashboard" class="section">
+            <h2>每日儀表板</h2>
+            <div class="stats">
+                <div class="stat">
+                    <h3>1500</h3>
+                    <p>今日卡路里消耗</p>
+                </div>
+                <div class="stat">
+                    <h3>5km</h3>
+                    <p>行走距離</p>
+                </div>
+                <div class="stat">
+                    <h3>7h</h3>
+                    <p>睡眠時間</p>
+                </div>
+            </div>
+            <a href="#plan" class="cta-button">查看計劃</a>
+        </section>
+
+        <!-- 減肥計劃 -->
+        <section id="plan" class="section">
+            <h2>個性化減肥計劃</h2>
+            <p><strong>今日任務：</strong>完成 30 分鐘有氧運動</p>
+            <p><strong>飲食建議：</strong>均衡攝取 2000 卡路里，建議高蛋白、低碳水飲食。</p>
+            <p><strong>進度追蹤：</strong>70% 已完成</p>
+            <a href="#community" class="cta-button">與夥伴分享進展</a>
+        </section>
+
+        <!-- 社群互動 -->
+        <section id="community" class="section">
+            <h2>社群互動</h2>
+            <p>在這裡與其他用戶交流心得與成果：</p>
+            <div class="comments">
+                <p><strong>用戶A：</strong>今天完成了 10,000 步，感覺棒極了！</p>
+                <p><strong>用戶B：</strong>試了新推薦的早餐食譜，好吃又健康！</p>
+                <p><strong>用戶C：</strong>請問大家如何克服運動懶惰症？</p>
+            </div>
+            <a href="#dashboard" class="cta-button">返回儀表板</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>減肥管理 APP © 2024. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
